@@ -1,0 +1,9 @@
+call themis#log('-----------------------------------------------------------')
+call themis#log((execute('version')->split("\n"))[: 2]->join("\n"))
+call themis#log('-----------------------------------------------------------')
+
+call themis#option('recursive', 1)
+call themis#option('reporter', 'spec')
+
+
+let g:assert = themis#helper('assert')

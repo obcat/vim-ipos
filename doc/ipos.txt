@@ -1,0 +1,52 @@
+*ipos.txt*	Remember the cursor position when Insert mode is started
+
+Author      : obcat <obcat@icloud.com>
+License     : MIT License
+Requirement : Vim ?.?.???? or later
+
+==============================================================================
+CONTENTS						*ipos-contents*
+
+INTRODUCTION		|ipos-introduction|
+VARIABLES		|ipos-variables|
+KEY MAPPINGS		|ipos-key-mappings|
+
+
+==============================================================================
+INTRODUCTION						*ipos-introduction*
+
+*ipos* is a Vim plugin to remember the cursor position when Insert mode,
+Replace mode, or Virtual Replace mode is started.
+
+
+==============================================================================
+VARIABLES						*ipos-variables*
+
+g:ipos_mark						*g:ipos_mark*
+	Just before starting Insert mode, Replace mode, or Virtual Replace
+	mode (when the |InsertEnter| event is triggered), set a |mark|
+	specified with this variable at the cursor position.  Default:
+>
+		let g:ipos_mark = 'i'
+<
+	This mark is used by |<Plug>(ipos-startinsert)|.
+
+
+==============================================================================
+KEY MAPPINGS						*ipos-key-mappings*
+
+<Plug>(ipos-startinsert)			*<Plug>(ipos-startinsert)*
+	Jump to the cursor position when Insert mode, Replace mode, or Virtual
+	Replace mode was last started in the current buffer, and then start
+	Insert mode.  This can be used only in Normal mode.  Setting example:
+>
+		nmap zi <Plug>(ipos-startinsert)
+<
+	This uses the mark |g:ipos_mark|.  It's different from
+	"`{g:ipos_mark}i" when 'virtualedit' is off and the mark is past the
+	end of the line.
+
+
+=============================================================================
+vim:tw=78:ts=8:noet:ft=help:norl:
+
