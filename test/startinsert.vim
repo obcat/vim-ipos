@@ -43,16 +43,16 @@ function s:suite.A()
         \   'line 1',
         \   'line 2',
         \ ])
-  normal! ggA xxx
+  normal! ggA
   call setline(3, ['line 3'])
   call g:assert.equals(getline(1, '$'), [
-        \   'line 1 xxx',
+        \   'line 1',
         \   'line 2',
         \   'line 3',
         \ ], '#1')
   normal zi yyy
   call g:assert.equals(getline(1, '$'), [
-        \   'line 1 yyy xxx',
+        \   'line 1 yyy',
         \   'line 2',
         \   'line 3',
         \ ], '#2')
