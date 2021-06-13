@@ -1,4 +1,4 @@
-*ipos.txt*	Remember the cursor position when entering Insert mode
+*ipos.txt*	Remember the cursor position just after entering Insert mode
 
 Author      : obcat <obcat@icloud.com>
 License     : MIT License
@@ -15,17 +15,17 @@ KEY MAPPINGS		|ipos-key-mappings|
 ==============================================================================
 INTRODUCTION						*ipos-introduction*
 
-*ipos* is a Vim plugin to remember the cursor position when entering Insert
-mode, Replace mode, or Virtual Replace mode.
+*ipos* is a Vim plugin to remember the cursor position just after entering
+Insert mode, Replace mode, or Virtual Replace mode.
 
 
 ==============================================================================
 VARIABLES						*ipos-variables*
 
 g:ipos_mark						*g:ipos_mark*
-	When entering Insert mode, Replace mode, or Virtual Replace mode (when
-	the |InsertEnter| event is triggered), a |mark| specified with this
-	variable is set at the cursor position.  Default:
+	Just after entering Insert mode, Replace mode, or Virtual Replace mode
+	(when the |InsertEnter| event is triggered), a |mark| specified with
+	this variable is set at the cursor position.  Default:
 >
 		let g:ipos_mark = 'i'
 <
