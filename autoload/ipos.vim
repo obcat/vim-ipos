@@ -14,7 +14,7 @@
 " NOTE: {{{
 " 1) Mark does not exist.  In this case, start Insert mode at the current
 "    cursor position.  This is the same behavior as the "gi" command.
-" 2) We cannot use setpos('.', [bufname, lnum, col, off]), which may set
+" 2) We cannot use setpos('.', [bufnum, lnum, col, off]), which may set
 "    the cursor undesired place in some cases.
 " 3) No need to consider the rightleft option.  `:execute "normal! \<Right>"`
 "    will move the cursor forward even if rightleft is on (this may be a bug
