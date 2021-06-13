@@ -16,7 +16,7 @@ function s:suite.i()
         \   'second line',
         \ ])
   execute 'normal! ggwixxx '
-  $put = 'third line'
+  call setline(3, ['third line'])
   call g:assert.equals(getline(1, '$'), [
         \   'first xxx line',
         \   'second line',
@@ -39,7 +39,8 @@ function s:suite.A()
         \   'second line',
         \ ])
   normal! ggA xxx
-  $put = 'third line'
+  " $put = 'third line'
+  call setline(3, ['third line'])
   call g:assert.equals(getline(1, '$'), [
         \   'first line xxx',
         \   'second line',
@@ -64,7 +65,8 @@ function s:suite.virtualedit()
         \   'second line',
         \ ])
   normal! gg$4lixxx
-  $put = 'third line'
+  " $put = 'third line'
+  call setline(3, ['third line'])
   call g:assert.equals(getline(1, '$'), [
         \   'first line   xxx',
         \   'second line',
@@ -93,7 +95,8 @@ function s:suite.virtualedit_x_rightleft() abort
   " NOTE: "normal! l" moves the cursor forward even though rightleft is on
   " (this may be a bug of Vim).
   normal! gg$4lixxx
-  $put = 'third line'
+  " $put = 'third line'
+  call setline(3, ['third line'])
   call g:assert.equals(getline(1, '$'), [
         \   'first line   xxx',
         \   'second line',
