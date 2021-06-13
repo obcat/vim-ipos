@@ -6,9 +6,10 @@ function s:suite.before()
 endfunction
 
 function s:suite.before_each() abort
-  % delete
   set virtualedit&
   set rightleft&
+  set modifiable&
+  % delete
 endfunction
 
 function s:suite.after()
@@ -110,4 +111,53 @@ function s:suite.virtualedit_x_rightleft() abort
 
   set virtualedit&
   set rightleft&
+endfunction
+
+
+function s:suite.no_mark() abort
+  call setline(1, [
+        \   'line 1',
+        \   'line 2',
+        \   'line 3',
+        \ ])
+  execute 'delmarks' g:ipos_mark
+  normal! 2G$
+  execute 'normal zixxx '
+  call g:assert.equals(getline(1, '$'), [
+        \   'line 1',
+        \   'line xxx 2',
+        \   'line 3',
+        \ ], '#1')
+endfunction
+
+
+function s:suite.nomodifiable() abort
+  call setline(1, [
+        \   'line 1',
+        \   'line 2',
+        \ ])
+  execute 'normal! gg$ixxx '
+  call setline(3, ['line 3'])
+  call g:assert.equals(getline(1, '$'), [
+        \   'line xxx 1',
+        \   'line 2',
+        \   'line 3',
+        \ ], '#1')
+  set nomodifiable
+  execute 'normal zihl'
+  call g:assert.equals(getline(1, '$'), [
+        \   'line xxx 1',
+        \   'line 2',
+        \   'line 3',
+        \ ], '#2')
+  call g:assert.equals(
+        \ [line('.'), col('.')],
+        \ [1, 6],
+        \ '#3')
+  call g:assert.equals(
+        \ split(execute('messages'), "\n")[-1],
+        \ '[ipos] ' .. gettext('E21: Cannot make changes, ''modifiable'' is off'),
+        \ '#4')
+
+  set modifiable&
 endfunction
