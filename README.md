@@ -1,5 +1,6 @@
 # vim-ipos
 
+[![CI](https://github.com/obcat/vim-ipos/workflows/CI/badge.svg)](https://github.com/obcat/vim-ipos/actions?query=workflow%3Aci)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.txt)
 
 Speed up your editing by remembering the cursor position when starting Insert mode!
