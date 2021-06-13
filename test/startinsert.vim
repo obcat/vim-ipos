@@ -5,7 +5,14 @@ function s:suite.before()
   nmap zi <Plug>(ipos-startinsert)
 endfunction
 
+function s:suite.before_each() abort
+  % delete
+  set virtualedit&
+  set rightleft&
+endfunction
+
 function s:suite.after()
+  call s:suite.before_each()
   nunmap zi
 endfunction
 
@@ -28,8 +35,6 @@ function s:suite.i()
         \   'second line',
         \   'third line',
         \ ], '#2')
-
-  bwipeout!
 endfunction
 
 
@@ -39,7 +44,6 @@ function s:suite.A()
         \   'second line',
         \ ])
   normal! ggA xxx
-  " $put = 'third line'
   call setline(3, ['third line'])
   call g:assert.equals(getline(1, '$'), [
         \   'first line xxx',
@@ -52,8 +56,6 @@ function s:suite.A()
         \   'second line',
         \   'third line',
         \ ], '#2')
-
-  bwipeout!
 endfunction
 
 
@@ -65,7 +67,6 @@ function s:suite.virtualedit()
         \   'second line',
         \ ])
   normal! gg$4lixxx
-  " $put = 'third line'
   call setline(3, ['third line'])
   call g:assert.equals(getline(1, '$'), [
         \   'first line   xxx',
@@ -80,7 +81,6 @@ function s:suite.virtualedit()
         \ ], '#2')
 
   set virtualedit&
-  bwipeout!
 endfunction
 
 
@@ -95,7 +95,6 @@ function s:suite.virtualedit_x_rightleft() abort
   " NOTE: "normal! l" moves the cursor forward even though rightleft is on
   " (this may be a bug of Vim).
   normal! gg$4lixxx
-  " $put = 'third line'
   call setline(3, ['third line'])
   call g:assert.equals(getline(1, '$'), [
         \   'first line   xxx',
@@ -111,5 +110,4 @@ function s:suite.virtualedit_x_rightleft() abort
 
   set virtualedit&
   set rightleft&
-  bwipeout!
 endfunction
