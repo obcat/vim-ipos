@@ -17,12 +17,17 @@ function s:suite.i()
         \ ])
   execute 'normal! ggwixxx '
   $put = 'third line'
+  call g:assert.equals(getline(1, '$'), [
+        \   'first xxx line',
+        \   'second line',
+        \   'third line',
+        \ ], '#1')
   execute 'normal ziyyy '
   call g:assert.equals(getline(1, '$'), [
         \   'first yyy xxx line',
         \   'second line',
         \   'third line',
-        \ ], '#1')
+        \ ], '#2')
 
   bwipeout!
 endfunction
@@ -35,12 +40,17 @@ function s:suite.A()
         \ ])
   normal! ggA xxx
   $put = 'third line'
+  call g:assert.equals(getline(1, '$'), [
+        \   'first line xxx',
+        \   'second line',
+        \   'third line',
+        \ ], '#1')
   normal zi yyy
   call g:assert.equals(getline(1, '$'), [
         \   'first line yyy xxx',
         \   'second line',
         \   'third line',
-        \ ], '#1')
+        \ ], '#2')
 
   bwipeout!
 endfunction
@@ -55,12 +65,17 @@ function s:suite.virtualedit()
         \ ])
   normal! gg$4lixxx
   $put = 'third line'
+  call g:assert.equals(getline(1, '$'), [
+        \   'first line   xxx',
+        \   'second line',
+        \   'third line',
+        \ ], '#1')
   execute 'normal ziyyy '
   call g:assert.equals(getline(1, '$'), [
         \   'first line   yyy xxx',
         \   'second line',
         \   'third line',
-        \ ], '#1')
+        \ ], '#2')
 
   set virtualedit&
   bwipeout!
@@ -79,12 +94,17 @@ function s:suite.virtualedit_x_rightleft() abort
   " (this may be a bug of Vim).
   normal! gg$4lixxx
   $put = 'third line'
+  call g:assert.equals(getline(1, '$'), [
+        \   'first line   xxx',
+        \   'second line',
+        \   'third line',
+        \ ], '#1')
   execute 'normal ziyyy '
   call g:assert.equals(getline(1, '$'), [
         \   'first line   yyy xxx',
         \   'second line',
         \   'third line',
-        \ ], '#1')
+        \ ], '#2')
 
   set virtualedit&
   set rightleft&
