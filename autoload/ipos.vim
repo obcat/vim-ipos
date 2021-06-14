@@ -29,8 +29,8 @@
 function ipos#startinsert() abort
   let virtualedit = &virtualedit
   set virtualedit=all
-  let [bufnum, lnum, col, off] = getpos('''' .. g:ipos_mark)
   try
+    let [bufnum, lnum, col, off] = getpos('''' .. g:ipos_mark)
     if [bufnum, lnum, col, off] == [0, 0, 0, 0]
       " 1)
     else
