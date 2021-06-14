@@ -4,7 +4,6 @@
 
 " NOTE: {{{
 " - When an error is encountered the rest of the mapping is not executed.
-"
 " - In evaluation of <expr> mapping:
 "   * The ":normal" command is blocked.
 "   * Moving the cursor is allowed, but it is restored afterwards.
@@ -14,11 +13,13 @@
 " NOTE: {{{
 " 1) Mark does not exist.  In this case, start Insert mode at the current
 "    cursor position.  This is the same behavior as the "gi" command.
-" 2) We cannot use setpos('.', [bufnum, lnum, col, off]), which may set
-"    the cursor undesired place in some cases.
-" 3) No need to consider the rightleft option.  `:execute "normal! \<Right>"`
-"    will move the cursor forward even if rightleft is on (this may be a bug
-"    of Vim).
+" 2) Do not replace this block with:
+"            call setpos('.', [bufnum, lnum, col, off])
+"    or the cursor may be moved to undesired position when 'virtualedit' is on.
+" 3) No need to consider the 'rightleft' option.
+"            execute "normal! \<Right>"`
+"    moves the cursor forward even if 'rightleft' is on (this may be a bug of
+"    Vim).
 " 4) The ":startinsert" command:
 "    - Starts Insert mode even if 'modifiable' is off.
 "    - Using this command in a function, the insertion starts after the
