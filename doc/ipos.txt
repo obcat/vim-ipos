@@ -40,15 +40,14 @@ g:ipos_mark						*g:ipos_mark*
 KEY MAPPINGS						*ipos-key-mappings*
 
 <Plug>(ipos-startinsert)			*<Plug>(ipos-startinsert)*
-	Jump to the cursor position when you last entered Insert mode, Replace
-	mode, or Virtual Replace mode in the current buffer, and then start
-	Insert mode.  This can be used only in Normal mode.  Setting example:
+	Jump to the position where the cursor was last time when you entered
+	Insert mode, Replace mode, or Virtual Replace mode, and then start
+	Insert mode.  This can be used only in Normal mode.  Example:
 >
 		nmap <Leader>i <Plug>(ipos-startinsert)
 <
-	This uses the mark |g:ipos#mark|.  It's different from
-	"`{g:ipos#mark}i" when 'virtualedit' is off and the mark is past the
-	end of the line.
+	This uses the mark |g:ipos#mark|.  It's different from `{g:ipos#mark}i
+	when 'virtualedit' is off and the mark is past the end of the line.
 
 
 =============================================================================
