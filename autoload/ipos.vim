@@ -2,6 +2,19 @@
 " License:    MIT License
 
 
+if !exists('g:ipos#mark')
+  if exists('g:ipos_mark')
+    let g:ipos#mark = deepcopy(g:ipos_mark)
+    let s:msg = "[ipos] g:ipos_mark is deprecated, please use g:ipos#mark instead\n"
+          \  .. "[ipos] The value of g:ipos_mark has been assigned: let g:ipos#mark = " .. strtrans(string(g:ipos_mark))
+    call ipos#message#warning(s:msg)
+    unlet s:msg
+  else
+    let g:ipos#mark = 'i'
+  endif
+endif
+
+
 " NOTE: {{{
 " - When an error is encountered the rest of the mapping is not executed.
 " - In evaluation of <expr> mapping:
@@ -27,10 +40,17 @@
 "      cursor position when this command was executed.
 " }}}
 function ipos#startinsert() abort
+  try
+    call ipos#mark#validate()
+  catch /^\[ipos\] /
+    call ipos#message#error(v:exception)
+    return
+  endtry
+
   let virtualedit = &virtualedit
   set virtualedit=all
   try
-    let [bufnum, lnum, col, off] = getpos('''' .. g:ipos_mark)
+    let [bufnum, lnum, col, off] = getpos('''' .. g:ipos#mark)
     if [bufnum, lnum, col, off] == [0, 0, 0, 0]
       " 1)
     else
@@ -46,16 +66,9 @@ function ipos#startinsert() abort
     else
       let msg = '[ipos] ' .. gettext('E21: Cannot make changes, ''modifiable'' is off')
       redraw
-      call s:echoerr(msg)
+      call ipos#message#error(msg)
     endif
   finally
     let &virtualedit = virtualedit
   endtry
-endfunction
-
-
-function s:echoerr(msg) abort
-  echohl ErrorMsg
-  echomsg a:msg
-  echohl None
 endfunction

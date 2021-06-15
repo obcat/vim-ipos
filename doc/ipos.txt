@@ -22,14 +22,18 @@ Insert mode, Replace mode, or Virtual Replace mode.
 ==============================================================================
 VARIABLES						*ipos-variables*
 
-g:ipos_mark						*g:ipos_mark*
-	Just after entering Insert mode, Replace mode, or Virtual Replace mode
-	(when the |InsertEnter| event is triggered), a |mark| specified with
-	this variable is set at the cursor position.  Default:
+g:ipos#mark						*g:ipos#mark*
+	Specifies a lowercase |mark| to be set at the cursor position just
+	after entering Insert mode, Replace mode, or Virtual Replace mode
+	(when the |InsertEnter| event is triggered).  Default:
 >
-		let g:ipos_mark = 'i'
+		let g:ipos#mark = 'i'
 <
 	This mark is used by |<Plug>(ipos-startinsert)|.
+
+g:ipos_mark						*g:ipos_mark*
+	DEPRECATED: Please use |g:ipos#mark| instead.  This will be removed in
+	the future.
 
 
 ==============================================================================
@@ -42,8 +46,8 @@ KEY MAPPINGS						*ipos-key-mappings*
 >
 		nmap zi <Plug>(ipos-startinsert)
 <
-	This uses the mark |g:ipos_mark|.  It's different from
-	"`{g:ipos_mark}i" when 'virtualedit' is off and the mark is past the
+	This uses the mark |g:ipos#mark|.  It's different from
+	"`{g:ipos#mark}i" when 'virtualedit' is off and the mark is past the
 	end of the line.
 
 
