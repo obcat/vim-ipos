@@ -30,7 +30,7 @@ g:ipos#mark						*g:ipos#mark*
 		let g:ipos#mark = 'i'
 <
 	このマークは |<Plug>(ipos-startinsert)| で使われます。
-	相方: |'^|
+	類似のマーク: |'^|
 
 g:ipos_mark						*g:ipos_mark*
 	DEPRECATED: 代わりに |g:ipos#mark| を使用してください。将来この変数は
@@ -49,7 +49,7 @@ g:ipos_mark						*g:ipos_mark*
 <
 	これはマーク |g:ipos#mark| を使います。'virtualedit' がオフで、マーク
 	が行末を超えている場合などに `{g:ipos#mark}i と異なる動作になります。
-	相方: |gi|
+	類似のコマンド: |gi|
 
 
 =============================================================================
