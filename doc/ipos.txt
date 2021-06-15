@@ -44,7 +44,7 @@ KEY MAPPINGS						*ipos-key-mappings*
 	mode, or Virtual Replace mode in the current buffer, and then start
 	Insert mode.  This can be used only in Normal mode.  Setting example:
 >
-		nmap zi <Plug>(ipos-startinsert)
+		nmap <Leader>i <Plug>(ipos-startinsert)
 <
 	This uses the mark |g:ipos#mark|.  It's different from
 	"`{g:ipos#mark}i" when 'virtualedit' is off and the mark is past the

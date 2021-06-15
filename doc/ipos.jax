@@ -44,7 +44,7 @@ g:ipos_mark						*g:ipos_mark*
 	入ったときのカーソル位置へジャンプして、挿入モードを開始します。ノーマ
 	ルモードでのみ使用可能です。設定例:
 >
-		nmap zi <Plug>(ipos-startinsert)
+		nmap <Leader>i <Plug>(ipos-startinsert)
 <
 	これはマーク |g:ipos#mark| を使います。'virtualedit' がオフで、マーク
 	が行末を超えている場合などに "`{g:ipos#mark}i" と異なる動作になります。

@@ -2,7 +2,7 @@ let s:suite = themis#suite('startinsert')
 
 
 function s:suite.before()
-  nmap zi <Plug>(ipos-startinsert)
+  nmap \i <Plug>(ipos-startinsert)
 endfunction
 
 function s:suite.before_each() abort
@@ -14,7 +14,7 @@ endfunction
 
 function s:suite.after()
   call s:suite.before_each()
-  nunmap zi
+  nunmap \i
 endfunction
 
 
@@ -30,7 +30,7 @@ function s:suite.i()
         \   'line 2',
         \   'line 3',
         \ ], '#1')
-  execute 'normal ziyyy '
+  execute 'normal \iyyy '
   call g:assert.equals(getline(1, '$'), [
         \   'line yyy xxx 1',
         \   'line 2',
@@ -51,7 +51,7 @@ function s:suite.A()
         \   'line 2',
         \   'line 3',
         \ ], '#1')
-  normal zi yyy
+  normal \i yyy
   call g:assert.equals(getline(1, '$'), [
         \   'line 1 yyy',
         \   'line 2',
@@ -74,7 +74,7 @@ function s:suite.virtualedit()
         \   'line 2',
         \   'line 3',
         \ ], '#1')
-  execute 'normal ziyyy '
+  execute 'normal \iyyy '
   call g:assert.equals(getline(1, '$'), [
         \   'line 1   yyy xxx',
         \   'line 2',
@@ -102,7 +102,7 @@ function s:suite.virtualedit_x_rightleft() abort
         \   'line 2',
         \   'line 3',
         \ ], '#1')
-  execute 'normal ziyyy '
+  execute 'normal \iyyy '
   call g:assert.equals(getline(1, '$'), [
         \   'line 1   yyy xxx',
         \   'line 2',
@@ -122,7 +122,7 @@ function s:suite.no_mark() abort
         \ ])
   execute 'delmarks' g:ipos#mark
   normal! 2G$
-  execute 'normal zixxx '
+  execute 'normal \ixxx '
   call g:assert.equals(getline(1, '$'), [
         \   'line 1',
         \   'line xxx 2',
@@ -144,7 +144,7 @@ function s:suite.nomodifiable() abort
         \   'line 3',
         \ ], '#1')
   set nomodifiable
-  execute 'normal zihl'
+  normal \ihl
   call g:assert.equals(getline(1, '$'), [
         \   'line xxx 1',
         \   'line 2',
