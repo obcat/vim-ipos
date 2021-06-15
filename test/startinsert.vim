@@ -156,7 +156,7 @@ function s:suite.nomodifiable() abort
         \ '#3')
   call g:assert.equals(
         \ split(execute('messages'), "\n")[-1],
-        \ '[ipos] ' .. gettext('E21: Cannot make changes, ''modifiable'' is off'),
+        \ '[ipos] Cannot make changes, ''modifiable'' is off',
         \ '#4')
 
   set modifiable&

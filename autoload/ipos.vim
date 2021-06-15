@@ -64,7 +64,7 @@ function ipos#startinsert() abort
     if &modifiable
       startinsert " 4)
     else
-      let msg = '[ipos] ' .. gettext('E21: Cannot make changes, ''modifiable'' is off')
+      let msg = '[ipos] Cannot make changes, ''modifiable'' is off'
       redraw
       call ipos#message#error(msg)
     endif
