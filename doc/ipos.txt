@@ -30,6 +30,7 @@ g:ipos#mark						*g:ipos#mark*
 		let g:ipos#mark = 'i'
 <
 	This mark is used by |<Plug>(ipos-startinsert)|.
+	Companion: |'^|
 
 g:ipos_mark						*g:ipos_mark*
 	DEPRECATED: Please use |g:ipos#mark| instead.  This will be removed in
@@ -48,6 +49,7 @@ KEY MAPPINGS						*ipos-key-mappings*
 <
 	This uses the mark |g:ipos#mark|.  It's different from `{g:ipos#mark}i
 	when 'virtualedit' is off and the mark is past the end of the line.
+	Companion: |gi|
 
 
 =============================================================================
