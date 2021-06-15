@@ -1,5 +1,5 @@
-" Maintainer: obcat <obcat@icloud.com>
-" License:    MIT License
+" Author:  obcat <obcat@icloud.com>
+" License: MIT License
 
 
 " set g:ipos#mark at cursor position
