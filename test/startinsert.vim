@@ -120,7 +120,7 @@ function s:suite.no_mark() abort
         \   'line 2',
         \   'line 3',
         \ ])
-  execute 'delmarks' g:ipos_mark
+  execute 'delmarks' g:ipos#mark
   normal! 2G$
   execute 'normal zixxx '
   call g:assert.equals(getline(1, '$'), [
