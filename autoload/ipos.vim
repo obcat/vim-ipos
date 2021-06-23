@@ -16,14 +16,6 @@ endif
 
 
 " NOTE: {{{
-" - When an error is encountered the rest of the mapping is not executed.
-" - In evaluation of <expr> mapping:
-"   * The ":normal" command is blocked.
-"   * Moving the cursor is allowed, but it is restored afterwards.
-" }}}
-
-
-" NOTE: {{{
 " 1) Mark does not exist.  In this case, start Insert mode at the current
 "    cursor position.  This is the same behavior as the "gi" command.
 " 2) Do not replace this block with:
@@ -72,3 +64,11 @@ function ipos#startinsert() abort
     let &virtualedit = virtualedit
   endtry
 endfunction
+
+
+" NOTE: {{{
+" - When an error is encountered the rest of the mapping is not executed.
+" - In evaluation of <expr> mapping:
+"   * The ":normal" command is blocked.
+"   * Moving the cursor is allowed, but it is restored afterwards.
+" }}}
