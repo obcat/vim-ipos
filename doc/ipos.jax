@@ -1,4 +1,4 @@
-*ipos.jax*	挿入モードに入ったときにカーソル位置を記憶する
+*ipos.jax*	前回の挿入開始位置にジャンプする
 
 書いた人  : obcat <obcat@icloud.com>
 ライセンス: MIT License
@@ -10,22 +10,31 @@
 はじめに		|ipos-introduction|
 変数			|ipos-variables|
 キーマッピング		|ipos-key-mappings|
+用語集			|ipos-glossary|
 
 
 ==============================================================================
-はじめに						*ipos-introduction*
+はじめに				*ipos-introduction* *ipos* *ipos.vim*
 
-*ipos* は挿入モード、置換モードまたは仮想置換モードに入ったときにカーソル位置
-を記憶するプラグインです。
+*vim-ipos* は「前回 Insert-ish モード (|ipos-Insert-ish-mode|) に入ったときに
+カーソルがあった位置」にジャンプする機能を提供する Vim プラグインです。具体的
+には、
+
+- 前回 Insert-ish モードに入ったときにカーソルがあった位置を示すマーク
+  |g:ipos#mark|
+- g:ipos#mark へジャンプして挿入モードを開始するためのキーシーケンス
+  |<Plug>(ipos-startinsert)|
+
+が含まれています。これらは、それぞれ Vim 組み込みの |'^| マークと |gi| コマン
+ドの相方のような機能になります。
 
 
 ==============================================================================
 変数							*ipos-variables*
 
 g:ipos#mark						*g:ipos#mark*
-	挿入モード、置換モードまたは仮想置換モードに入ったとき (|InsertEnter|
-	イベントが発生したとき) にカーソル位置にセットする、小文字のマーク
-	|mark| を指定します。デフォルト:
+	Insert-ish モード (|ipos-Insert-ish-mode|) に入ったときにカーソル位置
+	にセットする小文字のマーク (|mark|) を指定します。デフォルト:
 >
 		let g:ipos#mark = 'i'
 <
@@ -41,7 +50,7 @@ g:ipos_mark						*g:ipos_mark*
 キーマッピング						*ipos-key-mappings*
 
 <Plug>(ipos-startinsert)			*<Plug>(ipos-startinsert)*
-	前回、挿入モード、置換モードまたは仮想置換モードに入ったときにカーソル
+	前回 Insert-ish モード (|ipos-Insert-ish-mode|) に入ったときにカーソル
 	があった位置へジャンプして、挿入モードを開始します。ノーマルモードでの
 	み使用可能です。設定例:
 >
@@ -52,5 +61,13 @@ g:ipos_mark						*g:ipos_mark*
 	類似のコマンド: |gi|
 
 
-=============================================================================
+==============================================================================
+用語集							*ipos-glossary*
+
+Insert-ish モード					*ipos-Insert-ish-mode*
+	挿入モード (|Insert-mode|)、置換モード (|Replace-mode|) および仮想置換
+	モード (|Virtual-Replace-mode|) の総称です。
+
+
+==============================================================================
 vim:tw=78:ts=8:noet:ft=help:norl:
