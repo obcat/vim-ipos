@@ -5,9 +5,7 @@
 
 ![ipos-eyecatch](https://user-images.githubusercontent.com/64692680/121812633-89e2a680-cca3-11eb-8982-740b6683dd97.gif)
 
-vim-ipos is a Vim plugin that provides features to jump to the position where the cursor was last time you entered *Insert-ish mode*[^1].
-
-[^1]: A generic term for Insert-mode, Replace-mode and Virtual-Replace-mode.
+vim-ipos is a Vim plugin that provides features to jump to the position where the cursor was last time you entered [*Insert-ish mode*](https://github.com/obcat/vim-ipos/blob/72243850ef7b149f39e071637a191cd9ba80ea0e/doc/ipos.txt#L66-L68).
 
 Concretely,
 
