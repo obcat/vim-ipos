@@ -37,7 +37,7 @@ endif
 "    - Starts Insert mode even if 'modifiable' is off.
 "    - Using this command in a function, the insertion starts after the
 "      function is finished, but the position to start the insertion is the
-"      cursor position when this command was executed.
+"      position where the cursor was when this command was executed.
 " }}}
 function ipos#startinsert() abort
   try
