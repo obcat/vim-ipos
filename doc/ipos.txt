@@ -17,11 +17,11 @@ GLOSSARY		|ipos-glossary|
 INTRODUCTION				*ipos-introduction* *ipos* *ipos.vim*
 
 *vim-ipos* is a Vim plugin that provides features to jump to the position
-where the cursor was last time you entered Insert-ish mode
-(|ipos-Insert-ish-mode|).  Concretely,
+where the cursor was last time when Insert-ish mode (|ipos-Insert-ish-mode|)
+was started.  Concretely,
 
 - A mark |g:ipos#mark| that points the position where the cursor was last time
-  you entered Insert-ish mode
+  Insert-ish mode was started
 - A key sequence |<Plug>(ipos-startinsert)| to jump to the g:ipos#mark and
   then start Insert mode
 
@@ -50,8 +50,8 @@ g:ipos_mark						*g:ipos_mark*
 KEY MAPPINGS						*ipos-key-mappings*
 
 <Plug>(ipos-startinsert)			*<Plug>(ipos-startinsert)*
-	Jump to the position where the cursor was last time you entered
-	Insert-ish mode (|ipos-Insert-ish-mode|), and then start Insert mode.
+	Jump to the position where the cursor was last time Insert-ish mode
+	(|ipos-Insert-ish-mode|) was started, and then start Insert mode.
 	This can only be used in Normal mode.  Example:
 >
 		nmap <Leader>i <Plug>(ipos-startinsert)
