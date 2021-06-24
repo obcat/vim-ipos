@@ -56,9 +56,8 @@ function ipos#startinsert() abort
     if &modifiable
       startinsert " 4)
     else
-      let msg = '[ipos] Cannot make changes, ''modifiable'' is off'
       redraw
-      call ipos#message#error(msg)
+      call ipos#message#error('[ipos] Cannot make changes, ''modifiable'' is off')
     endif
   finally
     let &virtualedit = virtualedit
