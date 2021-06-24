@@ -60,6 +60,7 @@ KEY MAPPINGS						*ipos-key-mappings*
 	when 'virtualedit' is off and the mark is past the end of the line.
 	Similar command: |gi|
 
+
 ==============================================================================
 GLOSSARY						*ipos-glossary*
 
